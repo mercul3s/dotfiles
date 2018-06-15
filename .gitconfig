@@ -4,8 +4,6 @@
 [user]
 	name = Mercedes Coyle
 	email = mercedes@sensu.io 
-[editor]
-	editor = vi
 [github]
 	user = mercul3s
 [grep]
@@ -48,3 +46,5 @@
 [url "ssh://git@github.com/"]
   pushInsteadOf = git://github.com/
   pushInsteadOf = https://github.com/
+[core]
+	editor = vi
