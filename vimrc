@@ -3,9 +3,15 @@
 call plug#begin('~/.vim/plugged')
 
 " Go
-Plug 'fatih/vim-go'
-Plug 'nsf/gocode'
-Plug 'zchee/deoplete-go', { 'do': 'make' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 " Additional colour schemes
 Plug 'flazz/vim-colorschemes'
@@ -17,6 +23,9 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Mdkir
 Plug 'pbrisbin/vim-mkdir'
+
+" Markdown
+Plug 'gabrielelana/vim-markdown'
 
 " Editorconfig
 Plug 'editorconfig/editorconfig-vim'
@@ -30,8 +39,6 @@ function! BuildComposer(info)
     endif
   endif
 endfunction
-
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
 " NERDTree directory tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -114,11 +121,12 @@ autocmd GUIEnter * set visualbell t_vb=
 set completeopt+=noinsert
 set completeopt+=noselect
 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-let g:deoplete#sources#go#use_cache = 1
-let g:deoplete#sources#go#json_directory = '/path/to/data_dir'
+" Deoplete (not working so commented out)
+"  let g:deoplete#enable_at_startup = 1
+"  let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+"  let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+"  let g:deoplete#sources#go#use_cache = 1
+"  let g:deoplete#sources#go#json_directory = '/path/to/data_dir'
 
 "
 " Go Syntax
