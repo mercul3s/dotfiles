@@ -30,16 +30,14 @@ fi
 
 # install go
 if [ -e /usr/local/go ]; then
-	echo "$(go --version) already installed - skipping"
+	echo "$(go version) already installed - skipping"
 else
   echo "installing go v1.11"
-  # need to compile go from source here
-  # curl -Lo go1.4-bootstrap-20171003.tar.gz https://dl.google.com/go/go1.4-bootstrap-20171003.tar.gz
-  # tar -xvf go1.4-bootstrap-20171003.tar.gz -C
-  #curl -Lo go1.11.1.linux-amd64.tar.gz https://dl.google.com/go/go1.11.1.linux-armv6l.tar.gz
-  #curl -Lo go1.11.1.linux-amd64.tar.gz https://dl.google.com/go/go1.11.1.linux-amd64.tar.gz
-  # tar -xvf go1.11.1.linux-amd64.tar.gz -C /usr/local && rm go1.11.1.linux-amd64.tar.gz
-  # echo "installed $(go --version)"
+
+  curl -Lo go1.11.1.linux-arm64.tar.gz https://dl.google.com/go/go1.11.1.linux-arm64.tar.gz 
+  tar -xvf go1.11.1.linux-arm64.tar.gz -C /usr/local && rm go1.11.1.linux-arm64.tar.gz
+  
+  echo "installed $(go version)"
 fi
 
 # symlink config files 
