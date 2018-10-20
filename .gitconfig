@@ -3,7 +3,8 @@
 	default = tracking 
 [user]
 	name = Mercedes Coyle
-	email = mercedes@sensu.io 
+	email = me@mercedescoyle.com
+	signingkey = E66EE381F788CED6
 [github]
 	user = mercul3s
 [grep]

@@ -19,8 +19,6 @@ Plug 'nanotech/jellybeans.vim'
 
 " Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-
 " Mdkir
 Plug 'pbrisbin/vim-mkdir'
 
@@ -68,6 +66,11 @@ augroup vimrcEx
   autocmd FileType gitcommit setlocal spell
 augroup END
 
+NERDTreeToggle
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+let NERDTreeShowHidden=1
+
 "
 " Key mappings
 
@@ -104,6 +107,7 @@ set colorcolumn=+1
 " Numbers
 set number
 set numberwidth=5
+au BufWinEnter * set number
 
 " Display extra whitespace
 " set list listchars=tab:»·,trail:·,nbsp:·
@@ -134,3 +138,8 @@ set completeopt+=noselect
 let g:go_list_type = "quickfix"
 let g:go_fmt_command ="goimports"
 
+" Yaml syntax
+syntax on
+filetype plugin indent on
+
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
