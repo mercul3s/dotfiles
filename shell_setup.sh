@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "starting dev environment configuration"
+arch=$1
+echo "starting dev environment configuration for $arch"
 
 install () {
 	local program=$1
@@ -17,6 +18,7 @@ install () {
 install tmux
 install direnv
 install arduino
+install vim
 
 link_dir_path=$(pwd)
 
@@ -29,13 +31,14 @@ else
 fi
 
 # install go
+go_bin="go1.11.2.linux-$arch.tar.gz"
 if [ -e /usr/local/go ]; then
 	echo "$(go version) already installed - skipping"
 else
-  echo "installing go v1.11"
+  echo "installing go binary $go_bin"
 
-  curl -Lo go1.11.1.linux-arm64.tar.gz https://dl.google.com/go/go1.11.1.linux-arm64.tar.gz 
-  tar -xvf go1.11.1.linux-arm64.tar.gz -C /usr/local && rm go1.11.1.linux-arm64.tar.gz
+  curl -Lo $go_bin https://dl.google.com/go/$go_bin 
+  tar -xvf $go_bin -C /usr/local && rm $go_bin 
   
   echo "installed $(go version)"
 fi
