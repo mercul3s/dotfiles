@@ -3,6 +3,8 @@
 arch=$1
 echo "starting dev environment configuration for $arch"
 
+apt-get update
+
 install () {
 	local program=$1
 	local output=$(command -v $program)
@@ -19,6 +21,7 @@ install tmux
 install direnv
 install arduino
 install vim
+install curl
 
 link_dir_path=$(pwd)
 
