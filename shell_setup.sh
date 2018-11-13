@@ -46,6 +46,19 @@ else
   echo "installed $(go version)"
 fi
 
+# install rvm for ruby
+if [ -e /usr/share/rvm/bin/rvm ]; then
+	echo "rvm already installed - skipping"
+else
+	echo "installing rvm"
+	apt-get install software-properties-common
+	apt-add-repository -y ppa:rael-gc/rvm
+	apt-get update
+	apt-get install rvm -y
+	source /etc/profile.d/rvm.sh
+	echo "installed $(rvm --version)"
+fi
+
 # symlink config files 
 if [ -e ~/.vimrc ]; then
 	echo ".vimrc exists - skipping"
