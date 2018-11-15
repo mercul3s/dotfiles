@@ -15,6 +15,7 @@ export NVM_DIR=~/.nvm
 export PATH=$PATH:$(go env GOPATH)/bin
 export TERM=xterm-256color
 export ETCDCTL_API=3
+export PROMPT_COMMAND='history -a'
 
 # Bash Prompt Color Variables
 blu="\[\033[34m\]"
