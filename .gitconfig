@@ -39,9 +39,10 @@
 	cb = checkout -b
 	br = branch
 	df = diff
-	cm = commit -m
+	cm = commit
 	cms = commit -s 
 	pr = pull-request -m
+	pf = push --force-with-lease
   remotes = remote -v show
   rh = git reset 'HEAD@{1}'
 [url "ssh://git@github.com/"]
