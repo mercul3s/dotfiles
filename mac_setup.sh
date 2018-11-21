@@ -23,7 +23,6 @@ link_dir_path=$(pwd)
 # symlink config files
 symlink () {
 	local dotfile=$1
-	echo $HOME/$dotfile
 	if [ -e $HOME/$dotfile ]; then
 		echo "$HOME/$dotfile exists - skipping"
 	else

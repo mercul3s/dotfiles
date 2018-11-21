@@ -38,7 +38,7 @@ build_sensu_smartos() {
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
-export PS1="$cyn\u$grn@$yel\h.$red\W$pur\$(parse_git_branch)$gry$ $end"
+export PS1="$cyn\u$grn@$yel\h.$red\W$pur\$(parse_git_branch)🐓 $end"
 
 if [ -f ~/.config/exercism/exercism_completion.bash ]; then
   . ~/.config/exercism/exercism_completion.bash
