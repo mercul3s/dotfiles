@@ -1,13 +1,11 @@
-#source ~/dev/scripts/git-completion.bash
 
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
-export PATH="~/dev/scripts:$PATH"
-export PATH="~/dev/passphrase:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-export GOPATH="/home/$USER/dev/go"
+export GOPATH="$HOME/dev/go"
 export PATH=$PATH:$GOPATH/bin
-export CDPATH=${CDPATH}:${GOPATH}/src/github.com:${GOPATH}/src/golang.org:~/dev
+export CDPATH=$GOPATH/src:$HOME/dev
+#export CDPATH=${CDPATH}:${GOPATH}/src:${GOPATH}/src/golang.org:$HOME/dev
 export HISTTIMEFORMAT="%m/%d/%y %T "
 export HISTFILESIZE=
 export HISTSIZE=
@@ -40,6 +38,9 @@ parse_git_branch() {
 }
 export PS1="$cyn\u$grn@$yel\h.$red\W$pur\$(parse_git_branch)🐓 $end"
 
+# enable bash completion to work
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
 if [ -f ~/.config/exercism/exercism_completion.bash ]; then
   . ~/.config/exercism/exercism_completion.bash
 fi
@@ -55,5 +56,3 @@ if [ -f '/Users/mercedes/Downloads/google-cloud-sdk/completion.bash.inc' ]; then
 # hook direnv into bash
 eval "$(direnv hook bash)"
 
-# add Pulumi to the PATH
-export PATH=$PATH:$HOME/.pulumi/bin

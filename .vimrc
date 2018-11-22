@@ -11,14 +11,11 @@ call plug#begin('~/.vim/plugged')
 
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'tpope/vim-surround'
 
 " Additional colour schemes
 Plug 'flazz/vim-colorschemes'
@@ -73,7 +70,10 @@ augroup vimrcEx
   autocmd FileType gitcommit setlocal spell
 augroup END
 
-NERDTreeToggle
+autocmd StdinReadPre * let s:std_in=1
+
+" NERDTree autoload and always show hidden files/directories
+autocmd VimEnter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let NERDTreeShowHidden=1
@@ -86,6 +86,12 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
+"
+" Mouse copy support
+if has('mouse')
+  set mouse=a
+endif
 
 "
 " Style
