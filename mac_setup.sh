@@ -15,12 +15,12 @@ install () {
 
 install brew '/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
 
-brew install tmux
-brew install direnv
-brew install go
-brew install dep
-brew install bash-completion
-brew install glide
+package_list=("tmux" "direnv" "go" "dep" "bash-completion" "glide" "hub")
+
+for i in "${package_list[@]}"
+do
+  brew install $i
+done
 
 link_dir_path=$(pwd)
  

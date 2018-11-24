@@ -33,6 +33,8 @@ build_sensu_smartos() {
 
 #alias build_smartos="$(build_sensu_smartos)"
 
+eval "$(hub alias -s)"
+
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }

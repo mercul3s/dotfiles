@@ -9,13 +9,12 @@ endif
 " Plugins
 call plug#begin('~/.vim/plugged')
 
-" Go
+" Go tools
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'tpope/vim-surround'
 
 " Additional colour schemes
 Plug 'flazz/vim-colorschemes'
@@ -23,8 +22,10 @@ Plug 'nanotech/jellybeans.vim'
 
 " Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
-" Mdkir
+" General helpers 
 Plug 'pbrisbin/vim-mkdir'
+Plug 'tpope/vim-surround'
+Plug 'emilyst/vim-xray'
 
 " Markdown
 Plug 'gabrielelana/vim-markdown'
@@ -32,18 +33,9 @@ Plug 'gabrielelana/vim-markdown'
 " Editorconfig
 Plug 'editorconfig/editorconfig-vim'
 
-function! BuildComposer(info)
-  if a:info.status != 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo build --release
-    else
-      !cargo build --release --no-default-features --features json-rpc
-    endif
-  endif
-endfunction
-
 " NERDTree directory tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " End plugins
 call plug#end()
@@ -65,9 +57,8 @@ augroup vimrcEx
   " Automatically wrap at 80 characters for Markdown
   autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
-  " Automatically wrap at 72 characters and spell check git commit messages
+  " Automatically wrap git commit messages at 72 characters
   autocmd FileType gitcommit setlocal textwidth=72
-  autocmd FileType gitcommit setlocal spell
 augroup END
 
 autocmd StdinReadPre * let s:std_in=1
@@ -76,10 +67,17 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden=1
+
+set autoindent
+set smarttab
+set autowrite
 
 "
 " Key mappings
+
+let mapleader = "-"
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -93,9 +91,29 @@ if has('mouse')
   set mouse=a
 endif
 
+" Xray config for showing whitespace chars
+let g:xray_enable = 1
+let g:xray_ignored_filetypes = ['nerdtree']
+let g:xray_space_char = '·'
+let g:xray_tab_chars = '> '
+let g:xray_eol_char = '¶'
+let g:xray_trail_char = '·'
+
+" Select word under cursor
+noremap <space> viw
+
+" Move line up or down by one
+noremap <leader>_ dd2kp
+noremap <leader>- ddp
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Abbreviations
+iabbrev iferr if err!= nil {}
+
 "
 " Style
-
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
@@ -138,18 +156,18 @@ autocmd GUIEnter * set visualbell t_vb=
 set completeopt+=noinsert
 set completeopt+=noselect
 
-" Deoplete (not working so commented out)
-"  let g:deoplete#enable_at_startup = 1
-"  let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-"  let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-"  let g:deoplete#sources#go#use_cache = 1
-"  let g:deoplete#sources#go#json_directory = '/path/to/data_dir'
+" Deoplete
+"let g:deoplete#enable_at_startup = 1
+"let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+"let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+"let g:deoplete#sources#go#use_cache = 1
+"let g:deoplete#sources#go#json_directory = '/path/to/data_dir'
 
 "
 " Go Syntax
-
 let g:go_list_type = "quickfix"
 let g:go_fmt_command ="goimports"
+let g:go_metalinter_autosave=1
 
 " Yaml syntax
 syntax on

@@ -1,52 +1,54 @@
 # This is Git's per-user configuration file.
 [push]
-	default = tracking 
+  default = tracking 
 [user]
-	name = Mercedes Coyle
-	email = me@mercedescoyle.com
-	signingkey = E66EE381F788CED6
+  name = Mercedes Coyle
+  email = me@mercedescoyle.com
+  signingkey = E66EE381F788CED6
 [github]
-	user = mercul3s
+  user = mercul3s
 [grep]
-	lineNumber = true
+  lineNumber = true
 [color]
-	ui = true
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
-	current = yellow reverse
-	local = yellow
-	remote = green
+  ui = true
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  current = yellow reverse
+  local = yellow
+  remote = green
 [color "diff"]
-	whitespace = red reverse
-	frag = cyan
-	old = red bold
-	new = green bold
+  whitespace = red reverse
+  frag = cyan
+  old = red bold
+  new = green bold
 [color "status"]
-	added = green
-	changed = yellow
-	untracked = red
+  added = green
+  changed = yellow
+  untracked = red
 [color "grep"]
-	match = cyan
-	filename = yellow
+  match = cyan
+  filename = yellow
 [alias]
-	st = status
-	cl = clone --recursive
-	stat = status -sb
-	sb = show-branch
-	co = checkout
-	cb = checkout -b
-	br = branch
-	df = diff
-	cm = commit
-	cms = commit -s 
-	pr = pull-request -m
-	pf = push --force-with-lease
+  st = status
+  cl = clone --recursive
+  stat = status -sb
+  sb = show-branch
+  co = checkout
+  cb = checkout -b
+  br = branch
+  df = diff
+  cm = commit
+  cms = commit -s 
+  pr = pull-request -m
+  pf = push --force-with-lease
   remotes = remote -v show
   rh = git reset 'HEAD@{1}'
 [url "ssh://git@github.com/"]
   pushInsteadOf = git://github.com/
   pushInsteadOf = https://github.com/
 [core]
-	editor = vi
+  editor = vi
+[pull]
+  default = current
