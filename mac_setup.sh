@@ -15,6 +15,14 @@ install () {
 
 install brew '/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
 
+add_git_completion() {
+	if [ -e $HOME/.git-completion.bash ]; then
+		echo "$HOME/.git-completion.bash exists - skipping"
+	else
+      curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+    fi
+}
+
 package_list=("tmux" "direnv" "go" "dep" "bash-completion" "glide" "hub" "mosh"
 "watch")
 
@@ -39,6 +47,7 @@ symlink () {
 symlink .gitconfig
 symlink .bash_profile
 symlink .vimrc
+add_git_completion
 
 # update default screenshot location
 screenshot_location="$HOME/Pictures/Screenshots"
