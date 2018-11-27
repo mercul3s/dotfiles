@@ -15,7 +15,8 @@ install () {
 
 install brew '/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
 
-package_list=("tmux" "direnv" "go" "dep" "bash-completion" "glide" "hub")
+package_list=("tmux" "direnv" "go" "dep" "bash-completion" "glide" "hub" "mosh"
+"watch")
 
 for i in "${package_list[@]}"
 do

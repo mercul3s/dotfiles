@@ -14,13 +14,10 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 " Additional colour schemes
 Plug 'flazz/vim-colorschemes'
 Plug 'nanotech/jellybeans.vim'
-
-" Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
 " General helpers 
 Plug 'pbrisbin/vim-mkdir'
@@ -36,6 +33,9 @@ Plug 'editorconfig/editorconfig-vim'
 " NERDTree directory tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Rails  
+Plug 'tpope/vim-rails'
 
 " End plugins
 call plug#end()
@@ -140,9 +140,6 @@ set number
 set numberwidth=5
 au BufWinEnter * set number
 
-" Display extra whitespace
-" set list listchars=tab:»·,trail:·,nbsp:·
-
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
@@ -156,18 +153,18 @@ autocmd GUIEnter * set visualbell t_vb=
 set completeopt+=noinsert
 set completeopt+=noselect
 
-" Deoplete
-"let g:deoplete#enable_at_startup = 1
-"let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-"let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-"let g:deoplete#sources#go#use_cache = 1
-"let g:deoplete#sources#go#json_directory = '/path/to/data_dir'
-
 "
 " Go Syntax
 let g:go_list_type = "quickfix"
 let g:go_fmt_command ="goimports"
 let g:go_metalinter_autosave=1
+
+"
+" Ruby and Rails syntax
+
+filetype on
+filetype indent on
+filetype plugin on
 
 " Yaml syntax
 syntax on
