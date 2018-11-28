@@ -48,7 +48,7 @@ if [ -f ~/.config/exercism/exercism_completion.bash ]; then
 fi
 
 # Enable git branch completion
-test -f ~/.git-completion.bash && . $_
+# test -f ~/.git-completion.bash && . $_
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/mercedes/Downloads/google-cloud-sdk/path.bash.inc' ]; then source '/Users/mercedes/Downloads/google-cloud-sdk/path.bash.inc'; fi

@@ -47,6 +47,7 @@ symlink () {
 symlink .gitconfig
 symlink .bash_profile
 symlink .vimrc
+symlink .tmux.conf
 add_git_completion
 
 # update default screenshot location
