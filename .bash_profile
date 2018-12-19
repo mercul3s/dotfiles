@@ -33,6 +33,7 @@ build_sensu_smartos() {
 
 #alias build_smartos="$(build_sensu_smartos)"
 
+alias gtc="test -coverprofile=./coverprofile.out && go tool cover -html=./coverprofile.out"
 eval "$(hub alias -s)"
 
 parse_git_branch() {
@@ -55,8 +56,6 @@ if [ -f '/Users/mercedes/Downloads/google-cloud-sdk/path.bash.inc' ]; then sourc
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/mercedes/Downloads/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/mercedes/Downloads/google-cloud-sdk/completion.bash.inc'; fi
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # hook direnv into bash
 eval "$(direnv hook bash)"

@@ -23,8 +23,8 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'tpope/vim-surround'
 Plug 'emilyst/vim-xray'
+Plug 'vim-scripts/auto-pairs-gentle'
 
-" Markdown
 Plug 'gabrielelana/vim-markdown'
 
 " Editorconfig
@@ -32,7 +32,7 @@ Plug 'editorconfig/editorconfig-vim'
 
 " NERDTree directory tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Rails  
 Plug 'tpope/vim-rails'
@@ -126,10 +126,10 @@ set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 
 " Softtabs, 2 spaces
-set tabstop=4
-set shiftwidth=2
-set shiftround
-set expandtab
+" set tabstop=4
+" set shiftwidth=2
+" set shiftround
+" set expandtab
 
 " Make it obvious where 80 characters is
 set textwidth=80
