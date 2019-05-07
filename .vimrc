@@ -25,17 +25,28 @@ Plug 'tpope/vim-surround'
 Plug 'emilyst/vim-xray'
 Plug 'vim-scripts/auto-pairs-gentle'
 
-Plug 'gabrielelana/vim-markdown'
-
 " Editorconfig
 Plug 'editorconfig/editorconfig-vim'
 
+" Markdown
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'gabrielelana/vim-markdown'
+
 " NERDTree directory tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-" Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" Rails  
+" Nerdcommenter for block comments
+Plug 'scrooloose/nerdcommenter'
+
+" Rails/Ruby
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-endwise'
+
+" Terraform
+Plug 'hashivim/vim-terraform'
+
+" Yaml
+Plug 'mrk21/yaml-vim'
 
 " End plugins
 call plug#end()
@@ -74,10 +85,10 @@ set autoindent
 set smarttab
 set autowrite
 
+" resize splits automatically when window is resized
+autocmd VimResized * wincmd =
 "
 " Key mappings
-
-let mapleader = "-"
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -98,6 +109,8 @@ let g:xray_space_char = '·'
 let g:xray_tab_chars = '> '
 let g:xray_eol_char = '¶'
 let g:xray_trail_char = '·'
+
+let mapleader = "-"
 
 " Select word under cursor
 noremap <space> viw
@@ -126,10 +139,10 @@ set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 
 " Softtabs, 2 spaces
-" set tabstop=4
-" set shiftwidth=2
-" set shiftround
-" set expandtab
+set tabstop=4
+set shiftwidth=2
+set shiftround
+set expandtab
 
 " Make it obvious where 80 characters is
 set textwidth=80
@@ -158,13 +171,22 @@ set completeopt+=noselect
 let g:go_list_type = "quickfix"
 let g:go_fmt_command ="goimports"
 let g:go_metalinter_autosave=1
+let g:deoplete#enable_at_startup = 1
 
 "
 " Ruby and Rails syntax
-
 filetype on
 filetype indent on
 filetype plugin on
+set sw=4
+set ts=4
+:autocmd Filetype ruby set tabstop=2
+:autocmd Filetype ruby set softtabstop=2
+:autocmd Filetype ruby set sw=2
+:autocmd Filetype ruby set ts=2
+
+" use % when do block is highlighted to go to the end of the block (match do/end)
+runtime macros/matchit.vim
 
 " Yaml syntax
 syntax on
