@@ -24,12 +24,6 @@ pur="\[\033[35m\]"
 gry="\[\033[37m\]"
 end="\[\033[00m\]"
 
-build_sensu_smartos() {
-  cd sensu/sensu-go
-  GOOS=solaris GOARCH=amd64 ./build.sh build_backend
-  GOOS=solaris GOARCH=amd64 ./build.sh build_agent
-}
-
 alias k=kubectl
 
 alias gtc="test -coverprofile=./coverprofile.out && go tool cover -html=./coverprofile.out"
@@ -38,7 +32,7 @@ eval "$(hub alias -s)"
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
-export PS1="$cyn\u$grn@$yel\h.$red\W$pur\$(parse_git_branch)🐓 $end"
+export PS1="$cyn\u$grn@$yel\h.$red\W$pur\$(parse_git_branch)$end$ "
 
 # enable bash completion to work
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion

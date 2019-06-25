@@ -11,9 +11,7 @@ call plug#begin('~/.vim/plugged')
 
 " Go tools
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
 
 " Additional colour schemes
 Plug 'flazz/vim-colorschemes'
@@ -36,11 +34,16 @@ Plug 'gabrielelana/vim-markdown'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Nerdcommenter for block comments
+" see :help nerdcommenter for usage
 Plug 'scrooloose/nerdcommenter'
 
-" Rails/Ruby
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-endwise'
+" Visual indentation tool
+" Usage:
+" <Leader>ig
+" :IndentGuidesEnable
+" :IndentGuidesDisable
+" :IndentGuidesToggle
+Plug 'nathanaelkane/vim-indent-guides'
 
 " Terraform
 Plug 'hashivim/vim-terraform'
@@ -110,6 +113,9 @@ let g:xray_tab_chars = '> '
 let g:xray_eol_char = '¶'
 let g:xray_trail_char = '·'
 
+" Visual indent on start
+" let g:indent_guides_enable_on_vim_startup = 1
+
 let mapleader = "-"
 
 " Select word under cursor
@@ -161,7 +167,7 @@ set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
 "
-" Competions
+" Completions
 
 set completeopt+=noinsert
 set completeopt+=noselect
@@ -174,16 +180,11 @@ let g:go_metalinter_autosave=1
 let g:deoplete#enable_at_startup = 1
 
 "
-" Ruby and Rails syntax
 filetype on
 filetype indent on
 filetype plugin on
 set sw=4
 set ts=4
-:autocmd Filetype ruby set tabstop=2
-:autocmd Filetype ruby set softtabstop=2
-:autocmd Filetype ruby set sw=2
-:autocmd Filetype ruby set ts=2
 
 " use % when do block is highlighted to go to the end of the block (match do/end)
 runtime macros/matchit.vim
