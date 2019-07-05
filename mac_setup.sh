@@ -1,6 +1,5 @@
 #/!/bin/bash
 
-
 install () {
 	local program=$1
 	local command=$2
@@ -23,8 +22,7 @@ add_git_completion() {
     fi
 }
 
-package_list=("tmux" "direnv" "go" "dep" "bash-completion" "glide" "hub" "mosh"
-"watch")
+package_list=("tmux" "direnv" "go" "dep" "bash-completion" "hub" "watch" "vim")
 
 for i in "${package_list[@]}"
 do
