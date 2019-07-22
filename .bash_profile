@@ -1,3 +1,5 @@
+export GEM_HOME="$HOME/.gem"
+export PATH="$GEM_HOME/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
@@ -41,11 +43,8 @@ if [ -f ~/.config/exercism/exercism_completion.bash ]; then
   . ~/.config/exercism/exercism_completion.bash
 fi
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/mercedes/Downloads/google-cloud-sdk/path.bash.inc' ]; then source '/Users/mercedes/Downloads/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/mercedes/Downloads/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/mercedes/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+# enable git autocompletion
+souce $HOME/.git-completion.bash
 
 # hook direnv into bash
 eval "$(direnv hook bash)"
