@@ -44,7 +44,7 @@ if [ -f ~/.config/exercism/exercism_completion.bash ]; then
 fi
 
 # enable git autocompletion
-souce $HOME/.git-completion.bash
+source $HOME/.git-completion.bash
 
 # hook direnv into bash
 eval "$(direnv hook bash)"
