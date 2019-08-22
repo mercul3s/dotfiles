@@ -51,6 +51,13 @@ Plug 'hashivim/vim-terraform'
 " Yaml
 Plug 'mrk21/yaml-vim'
 
+" Arduino
+Plug 'sudar/vim-arduino-syntax'
+
+" Snippets for Vim
+" https://github.com/SirVer/ultisnips
+Plug 'SirVer/ultisnips'
+
 " End plugins
 call plug#end()
 
