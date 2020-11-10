@@ -3,9 +3,9 @@ export PATH="$GEM_HOME/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-export GOPATH="$HOME/dev/go"
 export PATH=$PATH:$GOPATH/bin
-export CDPATH=$GOPATH/src/github.com/:$HOME/dev
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+#export CDPATH=$GOPATH/src/github.com/:$HOME/dev
 export HISTTIMEFORMAT="%m/%d/%y %T "
 export HISTFILESIZE=
 export HISTSIZE=
@@ -13,7 +13,10 @@ export NVM_DIR=~/.nvm
 export PATH=$PATH:$(go env GOPATH)/bin
 export TERM=xterm-256color
 export ETCDCTL_API=3
+export AWS_DEFAULT_REGION="us-east-1"
 export PROMPT_COMMAND='history -a'
+export PATH="${PATH}:${HOME}/.krew/bin"
+export PIPENV_VERBOSITY=-1
 alias vim='/usr/local/bin/vim'
 
 # Bash Prompt Color Variables
@@ -27,6 +30,8 @@ gry="\[\033[37m\]"
 end="\[\033[00m\]"
 
 alias k=kubectl
+alias kd='kubectl describe'
+alias tf=terraform
 
 alias gtc="test -coverprofile=./coverprofile.out && go tool cover -html=./coverprofile.out"
 eval "$(hub alias -s)"
@@ -49,3 +54,5 @@ source $HOME/.git-completion.bash
 # hook direnv into bash
 eval "$(direnv hook bash)"
 
+
+complete -C /usr/local/Cellar/tfenv/1.0.1/versions/0.12.3/terraform terraform

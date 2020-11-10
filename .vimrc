@@ -20,11 +20,21 @@ Plug 'nanotech/jellybeans.vim'
 " General helpers 
 Plug 'pbrisbin/vim-mkdir'
 Plug 'tpope/vim-surround'
-Plug 'emilyst/vim-xray'
+Plug 'emilyst/vim-xray' 
+" https://github.com/emilyst/match-count-statusline and https://shapeshed.com/vim-statuslines/
+"Plug 'emilyst/match-count-statusline'
 Plug 'vim-scripts/auto-pairs-gentle'
+Plug 'zxqfl/tabnine-vim'
 
-" Editorconfig
-Plug 'editorconfig/editorconfig-vim'
+" Terraform
+Plug 'hashivim/vim-terraform' " https://github.com/hashivim/vim-terraform
+
+" Helm
+Plug 'towolf/vim-helm'
+
+" Python
+Plug 'nvie/vim-flake8'
+Plug 'vim-syntastic/syntastic'
 
 " Markdown
 Plug 'JamshedVesuna/vim-markdown-preview'
@@ -87,6 +97,7 @@ let NERDTreeShowHidden=1
 set autoindent
 set smarttab
 set autowrite
+set clipboard=unnamed
 
 " resize splits automatically when window is resized
 autocmd VimResized * wincmd =
@@ -113,6 +124,9 @@ let g:xray_tab_chars = '> '
 let g:xray_eol_char = '¶'
 let g:xray_trail_char = '·'
 
+" Vim-markdown use github markdown for previw
+let vim_markdown_preview_github=1
+
 " Visual indent on start
 " let g:indent_guides_enable_on_vim_startup = 1
 
@@ -131,6 +145,8 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " Abbreviations
 iabbrev iferr if err!= nil {}
 
+" Autopairs toggle (enable/disable)
+" let g:AutoPairsShortcutToggle = <leader>- apt 
 "
 " Style
 set backspace=2   " Backspace deletes like most programs in insert mode
@@ -177,7 +193,14 @@ set completeopt+=noselect
 let g:go_list_type = "quickfix"
 let g:go_fmt_command ="goimports"
 let g:go_metalinter_autosave=1
-let g:deoplete#enable_at_startup = 1
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+
+" Terraform formamtting
+let g:terraform_fmt_on_save=1
+let g:terraform_align=1
+let g:terraform_fold_sections=1
+let g:terraform_remap_spacebar=1
 
 "
 filetype on

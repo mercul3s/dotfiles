@@ -51,4 +51,6 @@
 [core]
   editor = vi
 [pull]
-  default = current
+    default = current
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
