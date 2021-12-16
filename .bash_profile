@@ -56,3 +56,5 @@ eval "$(direnv hook bash)"
 
 
 complete -C /usr/local/Cellar/tfenv/1.0.1/versions/0.12.3/terraform terraform
+
+source ~/.bashrc
